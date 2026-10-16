@@ -44,8 +44,10 @@ Each user story follows the Spec Kit lifecycle on its own branch:
 
 The local board (`board/BOARD.md`) is the source of truth for story status. Rule: **one commit per completed feature**, using Conventional Commits (`feat(US-00X): ...`), with the board updated in the same commit.
 
+**Branching (OneBranch)**: `main` is the only long-lived branch. Every story branch is created from `main` and its PR targets `main`; no integration or stacked base branches. Dependent stories start only after their dependencies are merged into `main`.
+
 ## Governance
 
 This constitution supersedes other practices. Amendments require a PR that explains the change, updates dependent templates/ADRs, and bumps the version. Every PR and review must check compliance with these principles; deviations must be justified in the plan.
 
-**Version**: 1.0.0 | **Ratified**: 2026-10-16 | **Last Amended**: 2026-10-16
+**Version**: 1.1.0 | **Ratified**: 2026-10-16 | **Last Amended**: 2026-10-16
