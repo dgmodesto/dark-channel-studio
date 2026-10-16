@@ -40,6 +40,12 @@ $env:REDIS_URL = "redis://127.0.0.1:$redisPort/0"
 $env:API_BASE_URL = "http://127.0.0.1:$apiPort"
 $env:VOICE_STORAGE_DIR = Join-Path $root "storage\audio"
 
+# Native stderr (e.g. Docker warnings) must not abort the script under $ErrorActionPreference=Stop.
+function Test-Docker {
+    $prev = $ErrorActionPreference; $ErrorActionPreference = "Continue"
+    try { docker info 2>&1 | Out-Null; return ($LASTEXITCODE -eq 0) } finally { $ErrorActionPreference = $prev }
+}
+
 function Wait-Port($port, $label) {
     for ($i = 0; $i -lt 60; $i++) {
         if (Test-NetConnection 127.0.0.1 -Port $port -InformationLevel Quiet -WarningAction SilentlyContinue) { return }
