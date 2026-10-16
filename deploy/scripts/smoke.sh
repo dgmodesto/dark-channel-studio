@@ -3,7 +3,11 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 [ -f .env ] || cp .env.example .env
-docker compose --env-file .env up -d --build
+if ! docker compose --env-file .env up -d --build; then
+  docker compose --env-file .env ps -a
+  docker compose --env-file .env logs --tail=80 api worker web >&2
+  exit 1
+fi
 API_PORT="$(grep -E '^API_PORT=' .env | cut -d= -f2)"
 for _ in $(seq 1 60); do
   if curl -fsS "http://127.0.0.1:${API_PORT:-8000}/health" | grep -q '"status":"healthy"'; then
@@ -14,4 +18,5 @@ for _ in $(seq 1 60); do
 done
 echo "FAIL: platform did not become healthy" >&2
 docker compose --env-file .env ps
+docker compose --env-file .env logs --tail=80 api worker web >&2
 exit 1
