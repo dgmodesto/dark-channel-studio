@@ -34,3 +34,7 @@ Thumbs.db
 
 # Docker
 docker-compose.override.yml
+
+*.tsbuildinfo
+.next/
+next-env.d.ts

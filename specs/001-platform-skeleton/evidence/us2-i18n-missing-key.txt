@@ -1,0 +1,4 @@
+> node scripts/check-translations.mjs
+
+Missing key "Placeholder.x" in locale "en"
+Missing key "Placeholder.comingSoon" in locale "pt-BR"

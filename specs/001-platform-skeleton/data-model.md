@@ -17,7 +17,7 @@ This story adds no domain tables. The Alembic baseline revision is empty.
 | `LOG_LEVEL` | api, worker | no | default `INFO` |
 | `API_PORT` / `WEB_PORT` / `POSTGRES_PORT` / `REDIS_PORT` | compose | no | host ports, bound to 127.0.0.1 |
 | `POSTGRES_USER` / `POSTGRES_PASSWORD` / `POSTGRES_DB` | postgres | yes | example values only in `.env.example` |
-| `NEXT_PUBLIC_API_BASE_URL` | web | yes | |
+| `API_BASE_URL` | web | yes | |
 
 Missing required variables abort startup with an error naming the variable, never its value.
 

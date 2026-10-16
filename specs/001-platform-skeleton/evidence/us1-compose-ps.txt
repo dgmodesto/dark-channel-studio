@@ -1,0 +1,5 @@
+api Up 40 seconds (healthy)
+postgres Up 47 seconds (healthy)
+redis Up 47 seconds (healthy)
+web Up 34 seconds (healthy)
+worker Up 40 seconds (healthy)
