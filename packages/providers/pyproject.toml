@@ -1,0 +1,22 @@
+[project]
+name = "dcs-providers"
+version = "0.1.0"
+description = "Provider protocols, adapters, fakes, cost tracking and budgets"
+requires-python = ">=3.12"
+dependencies = [
+  "dcs-common",
+  "httpx>=0.27",
+  "pydantic>=2.8",
+  "pydantic-settings>=2.4",
+  "sqlalchemy[asyncio]>=2.0",
+]
+
+[tool.uv.sources]
+dcs-common = { workspace = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dcs_providers"]
