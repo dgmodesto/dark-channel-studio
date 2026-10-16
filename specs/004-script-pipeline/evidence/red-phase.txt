@@ -1,0 +1,62 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.5, pytest-9.1.1, pluggy-1.7.0
+rootdir: C:\Users\dgmodesto\.copilot\repos\copilot-worktrees\dark-channel-studio\dgmodesto-crispy-robot
+configfile: pyproject.toml
+plugins: anyio-4.15.1, langsmith-0.14.11, asyncio-1.4.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 0 items / 4 errors
+
+=================================== ERRORS ====================================
+_______ ERROR collecting packages/orchestrator/tests/test_boundaries.py _______
+ImportError while importing test module 'C:\Users\dgmodesto\.copilot\repos\copilot-worktrees\dark-channel-studio\dgmodesto-crispy-robot\packages\orchestrator\tests\test_boundaries.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+packages\orchestrator\tests\test_boundaries.py:4: in <module>
+    from script_helpers import ScriptedChat, make
+packages\orchestrator\tests\script_helpers.py:4: in <module>
+    from dcs_orchestrator.adapters.langgraph_script import LangGraphScriptOrchestrator
+E   ModuleNotFoundError: No module named 'dcs_orchestrator'
+_________ ERROR collecting packages/orchestrator/tests/test_checks.py _________
+ImportError while importing test module 'C:\Users\dgmodesto\.copilot\repos\copilot-worktrees\dark-channel-studio\dgmodesto-crispy-robot\packages\orchestrator\tests\test_checks.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+packages\orchestrator\tests\test_checks.py:5: in <module>
+    from dcs_orchestrator.checks import parse_draft, validate_lines
+E   ModuleNotFoundError: No module named 'dcs_orchestrator'
+________ ERROR collecting packages/orchestrator/tests/test_pipeline.py ________
+ImportError while importing test module 'C:\Users\dgmodesto\.copilot\repos\copilot-worktrees\dark-channel-studio\dgmodesto-crispy-robot\packages\orchestrator\tests\test_pipeline.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+packages\orchestrator\tests\test_pipeline.py:4: in <module>
+    from script_helpers import GOOD, ScriptedChat, draft, make, request, verdict
+packages\orchestrator\tests\script_helpers.py:4: in <module>
+    from dcs_orchestrator.adapters.langgraph_script import LangGraphScriptOrchestrator
+E   ModuleNotFoundError: No module named 'dcs_orchestrator'
+_________ ERROR collecting packages/orchestrator/tests/test_resume.py _________
+ImportError while importing test module 'C:\Users\dgmodesto\.copilot\repos\copilot-worktrees\dark-channel-studio\dgmodesto-crispy-robot\packages\orchestrator\tests\test_resume.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+packages\orchestrator\tests\test_resume.py:2: in <module>
+    from script_helpers import GOOD, ScriptedChat, make, request, verdict
+packages\orchestrator\tests\script_helpers.py:4: in <module>
+    from dcs_orchestrator.adapters.langgraph_script import LangGraphScriptOrchestrator
+E   ModuleNotFoundError: No module named 'dcs_orchestrator'
+=========================== short test summary info ===========================
+ERROR packages/orchestrator/tests/test_boundaries.py
+ERROR packages/orchestrator/tests/test_checks.py
+ERROR packages/orchestrator/tests/test_pipeline.py
+ERROR packages/orchestrator/tests/test_resume.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 4 errors during collection !!!!!!!!!!!!!!!!!!!
+============================== 4 errors in 0.44s ==============================
