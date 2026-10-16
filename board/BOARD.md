@@ -16,7 +16,7 @@ Status: `Backlog` · `In Progress` · `Review` · `Done`
 | US-003 | Niche template + channel model: English A1/A2 template as data, channel CRUD in API and UI | Done | US-001 | [specs/003-niche-template-channel-model](../specs/003-niche-template-channel-model/spec.md) |
 | US-004 | Script pipeline: LangGraph writer + reviewer loop with bounded iterations and Postgres checkpoints | Done | US-002, US-003 | [specs/004-script-pipeline](../specs/004-script-pipeline/spec.md) |
 | US-005 | Voice job: TTS worker producing per-line audio with shadowing pauses | Done | US-002, US-004 | [specs/005-voice-job](../specs/005-voice-job/spec.md) |
-| US-006 | Deterministic render: FFmpeg/Remotion with dual EN/PT subtitles, background, music ducking | Backlog | US-005 | — |
+| US-006 | Deterministic render: FFmpeg/Remotion with dual EN/PT subtitles, background, music ducking | Done | US-005 | [specs/006-deterministic-render](../specs/006-deterministic-render/spec.md) |
 | US-007 | Review player and approval gate: audio/video review UI, approve/request changes resumes the graph | Backlog | US-004, US-006 | — |
 | US-008 | Thumbnail and SEO: template-based thumbnail, title/description/tags, disclosure rules | Backlog | US-004 | — |
 | US-009 | YouTube OAuth + upload: encrypted tokens, `publishAt` scheduling, quota budgeter, manual-publish fallback | Backlog | US-007, US-008 | — |
@@ -58,8 +58,8 @@ Status: `Backlog` · `In Progress` · `Review` · `Done`
 - [x] Shadowing pauses configurable by template
 
 ### US-006 Deterministic render
-- [ ] Same inputs produce the same video
-- [ ] Dual subtitles, background, music at -20 dB ducking
+- [x] Same inputs produce the same video
+- [x] Dual subtitles, background, music at -20 dB ducking
 
 ### US-007 Review player and approval gate
 - [ ] Interrupt pauses the run until a decision is made
