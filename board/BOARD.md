@@ -11,7 +11,7 @@ Status: `Backlog` · `In Progress` · `Review` · `Done`
 
 | ID | Story | Status | Depends on | Spec |
 |---|---|---|---|---|
-| US-001 | Platform skeleton: Compose stack (Postgres, Redis, API, worker, web), health checks, CI, bilingual shell | Backlog | — | — |
+| US-001 | Platform skeleton: Compose stack (Postgres, Redis, API, worker, web), health checks, CI, bilingual shell | In Progress | — | [specs/001-platform-skeleton](../specs/001-platform-skeleton/spec.md) |
 | US-002 | Provider abstraction + cost tracking: `ChatModel`/`TTS` protocols, OpenAI + ElevenLabs adapters, fakes, `cost_event` | Backlog | US-001 | — |
 | US-003 | Niche template + channel model: English A1/A2 template as data, channel CRUD in API and UI | Backlog | US-001 | — |
 | US-004 | Script pipeline: LangGraph writer + reviewer loop with bounded iterations and Postgres checkpoints | Backlog | US-002, US-003 | — |
