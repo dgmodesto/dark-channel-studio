@@ -17,6 +17,7 @@ class VoiceConfig(_Strict):
     role: str
     speed: float = Field(gt=0)
     shadowing_pause_seconds: float = Field(ge=0)
+    shadowing_sections: list[str] = []
 
 
 class SubtitleConfig(_Strict):

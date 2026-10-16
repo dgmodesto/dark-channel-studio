@@ -431,12 +431,16 @@ source = { editable = "apps/worker" }
 dependencies = [
     { name = "arq" },
     { name = "dcs-common" },
+    { name = "dcs-niche-templates" },
+    { name = "dcs-providers" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "arq", specifier = ">=0.26" },
     { name = "dcs-common", editable = "packages/common" },
+    { name = "dcs-niche-templates", editable = "packages/niche-templates" },
+    { name = "dcs-providers", editable = "packages/providers" },
 ]
 
 [[package]]

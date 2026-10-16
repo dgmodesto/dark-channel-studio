@@ -19,6 +19,18 @@ def test_explicit_version():
     assert get_template("english-a1-a2-br", 1).version == 1
 
 
+def test_shadowing_sections_are_template_data():
+    t = get_template("english-a1-a2-br")
+    assert t.voice.shadowing_sections == ["key_phrases", "dialogue"]
+    assert set(t.voice.shadowing_sections) <= set(t.script.sections)
+
+
+def test_shadowing_sections_default_empty():
+    from dcs_niche_templates.models import VoiceConfig
+
+    assert VoiceConfig(role="n", speed=1.0, shadowing_pause_seconds=0).shadowing_sections == []
+
+
 @pytest.mark.parametrize("args", [("nope", None), ("english-a1-a2-br", 99)])
 def test_not_found(args):
     with pytest.raises(TemplateNotFoundError) as exc:

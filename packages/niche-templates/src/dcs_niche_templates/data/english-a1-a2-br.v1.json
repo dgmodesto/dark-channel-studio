@@ -12,7 +12,8 @@
   "voice": {
     "role": "narrator",
     "speed": 0.9,
-    "shadowing_pause_seconds": 2.0
+    "shadowing_pause_seconds": 2.0,
+    "shadowing_sections": ["key_phrases", "dialogue"]
   },
   "subtitles": {
     "primary": "en",
