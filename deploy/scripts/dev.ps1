@@ -8,8 +8,9 @@ on the host with hot reload. Used by the VS Code tasks in .vscode/tasks.json.
   .\deploy\scripts\dev.ps1 worker   # arq worker
   .\deploy\scripts\dev.ps1 web      # next dev
   .\deploy\scripts\dev.ps1 stop     # stop infra containers
+  .\deploy\scripts\dev.ps1 stop-all # stop api, worker, web processes and infra containers
 #>
-param([Parameter(Mandatory)][ValidateSet("infra", "api", "worker", "web", "stop")][string]$Service)
+param([Parameter(Mandatory)][ValidateSet("infra", "api", "worker", "web", "stop", "stop-all")][string]$Service)
 
 $ErrorActionPreference = "Stop"
 $root = Resolve-Path (Join-Path $PSScriptRoot "..\..")
@@ -93,6 +94,22 @@ switch ($Service) {
     }
     "stop" {
         $ErrorActionPreference = "Continue"
+        docker compose -f deploy/compose.yaml --env-file deploy/.env stop postgres redis
+    }
+    "stop-all" {
+        $ErrorActionPreference = "Continue"
+        $ids = @()
+        foreach ($port in $apiPort, $webPort) {
+            $ids += Get-NetTCPConnection -LocalPort $port -State Listen -ErrorAction SilentlyContinue |
+                Select-Object -ExpandProperty OwningProcess
+        }
+        $ids += Get-CimInstance Win32_Process |
+            Where-Object { $_.CommandLine -match 'dcs_worker\.settings' -and $_.ProcessId -ne $PID } |
+            Select-Object -ExpandProperty ProcessId
+        foreach ($id in ($ids | Where-Object { $_ } | Sort-Object -Unique)) {
+            taskkill /PID $id /T /F 2>&1 | Out-Null
+            Write-Host "Stopped process tree $id"
+        }
         docker compose -f deploy/compose.yaml --env-file deploy/.env stop postgres redis
     }
 }

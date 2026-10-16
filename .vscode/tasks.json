@@ -47,6 +47,12 @@
       "detail": "Starts Postgres/Redis in Docker, then api, worker and web with hot reload."
     },
     {
+      "label": "Dev: stop all (api + worker + web + infra)",
+      "type": "shell",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File deploy/scripts/dev.ps1 stop-all",
+      "problemMatcher": []
+    },
+    {
       "label": "Dev: stop infra",
       "type": "shell",
       "command": "powershell -NoProfile -ExecutionPolicy Bypass -File deploy/scripts/dev.ps1 stop",
