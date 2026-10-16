@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 
-const NAV_KEYS = ["channels", "pipeline", "calendar", "metrics"] as const;
+const NAV_KEYS = ["channels", "pipeline", "review", "calendar", "metrics"] as const;
 
 export function Shell() {
   const t = useTranslations();
@@ -15,6 +15,8 @@ export function Shell() {
             <li key={key}>
               {key === "channels" ? (
                 <Link href="/channels">{t(`Nav.${key}`)}</Link>
+              ) : key === "review" ? (
+                <Link href="/review">{t(`Nav.${key}`)}</Link>
               ) : (
                 <span aria-disabled="true" title={t("Placeholder.comingSoon")}>
                   {t(`Nav.${key}`)}

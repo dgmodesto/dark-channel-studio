@@ -31,4 +31,14 @@ async def render_video_job(ctx: dict, payload: dict) -> dict:
     )
     tools = ctx.get("media_tools") or FfmpegTools()
     result = await render_video(request, ctx["audio_store"], tools)
+    submit_review = ctx.get("review_submitter")
+    if submit_review is not None:
+        await submit_review(
+            {
+                "run_id": result.run_id,
+                "title": str(payload.get("review_title") or result.run_id),
+                "video_key": result.video_key,
+                "audio_keys": [entry["audio_key"] for entry in payload["manifest"]["entries"]],
+            }
+        )
     return result.to_dict()

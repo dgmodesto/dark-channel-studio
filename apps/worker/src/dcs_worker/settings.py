@@ -1,6 +1,7 @@
 import os
 from decimal import Decimal
 
+import httpx
 import structlog
 from arq import cron
 from arq.connections import RedisSettings
@@ -48,6 +49,18 @@ async def startup(ctx: dict) -> None:
     ctx["redis_client"] = Redis.from_url(_settings.redis_url)
     ctx["engine_holder"] = {}
     ctx["audio_store"] = LocalAudioStore(os.environ.get("VOICE_STORAGE_DIR", "storage/audio"))
+    api_client = httpx.AsyncClient(
+        base_url=os.environ.get("API_BASE_URL", "http://127.0.0.1:8000"), timeout=10.0
+    )
+
+    async def submit_review(payload: dict) -> None:
+        response = await api_client.post("/reviews", json=payload)
+        if not response.is_success:
+            code = response.json().get("code", "review.submit_failed")
+            raise RuntimeError(f"review submission failed: {code}")
+
+    ctx["review_api_client"] = api_client
+    ctx["review_submitter"] = submit_review
     ctx["tts_factory"] = make_tts_factory(ctx["engine_holder"])
     await heartbeat(ctx)
     structlog.get_logger().info("worker.started")
@@ -55,6 +68,7 @@ async def startup(ctx: dict) -> None:
 
 async def shutdown(ctx: dict) -> None:
     await ctx["redis_client"].aclose()
+    await ctx["review_api_client"].aclose()
     if "engine" in ctx["engine_holder"]:
         await ctx["engine_holder"]["engine"].dispose()
 

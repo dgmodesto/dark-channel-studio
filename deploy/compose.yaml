@@ -38,6 +38,9 @@ services:
       DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
       REDIS_URL: redis://redis:6379/0
       LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      MEDIA_STORAGE_DIR: /app/storage/audio
+    volumes:
+      - media:/app/storage/audio
     depends_on:
       postgres:
         condition: service_healthy
@@ -54,6 +57,10 @@ services:
       DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
       REDIS_URL: redis://redis:6379/0
       LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      VOICE_STORAGE_DIR: /app/storage/audio
+      API_BASE_URL: http://api:8000
+    volumes:
+      - media:/app/storage/audio
     depends_on:
       redis:
         condition: service_healthy
@@ -81,3 +88,4 @@ services:
 volumes:
   pgdata:
   redisdata:
+  media:

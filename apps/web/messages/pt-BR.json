@@ -6,6 +6,7 @@
   "Nav": {
     "channels": "Canais",
     "pipeline": "Pipeline",
+    "review": "Revisão",
     "calendar": "Calendário",
     "metrics": "Métricas"
   },
@@ -42,6 +43,30 @@
     "delete": "Excluir",
     "templateInfo": "Template {template} v{version}"
   },
+  "Review": {
+    "title": "Fila de revisão",
+    "back": "Voltar ao início",
+    "empty": "Não há itens aguardando revisão.",
+    "listLabel": "Vídeos renderizados aguardando revisão",
+    "runId": "Execução {runId}",
+    "videoLabel": "Prévia do vídeo: {title}",
+    "audioLabel": "Faixa de voz {number}",
+    "mediaUnsupported": "Seu navegador não consegue reproduzir esta mídia.",
+    "mediaError": "Não foi possível carregar esta mídia. Verifique o arquivo e atualize a página.",
+    "notesLabel": "Notas das alterações (obrigatórias ao solicitar mudanças)",
+    "notesRequired": "Adicione notas antes de solicitar alterações.",
+    "approve": "Aprovar",
+    "requestChanges": "Solicitar alterações",
+    "saving": "Salvando…",
+    "decisionError": "Não foi possível salvar a decisão. Tente novamente.",
+    "approvedNotice": "Aprovado.",
+    "changesNotice": "Alterações solicitadas:",
+    "status": {
+      "awaiting_review": "Aguardando revisão",
+      "approved": "Aprovado",
+      "changes_requested": "Alterações solicitadas"
+    }
+  },
   "Errors": {
     "unknown": "Algo deu errado. Tente novamente.",
     "api": {
@@ -50,6 +75,10 @@
     "channel": {
       "template_unknown": "O template selecionado não existe.",
       "not_found": "Canal não encontrado."
+    },
+    "review": {
+      "not_found": "Este item de revisão não foi encontrado.",
+      "media_not_found": "A mídia solicitada não foi encontrada."
     },
     "http": {
       "invalid_request": "Verifique os campos do formulário."
