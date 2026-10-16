@@ -14,6 +14,7 @@ from dcs_providers.ledger import SqlCostLedger
 from dcs_providers.metering import MeteredTTS, RunContext
 from dcs_providers.registry import build_tts
 from dcs_worker.jobs.heartbeat import heartbeat
+from dcs_worker.jobs.render import render_video_job
 from dcs_worker.jobs.voice import synthesize_voice_job
 from dcs_worker.voice.store import LocalAudioStore
 
@@ -62,5 +63,5 @@ class WorkerSettings:
     redis_settings = RedisSettings.from_dsn(_settings.redis_url)
     on_startup = startup
     on_shutdown = shutdown
-    functions = [synthesize_voice_job]
+    functions = [synthesize_voice_job, render_video_job]
     cron_jobs = [cron(heartbeat, second={0, 10, 20, 30, 40, 50}, run_at_startup=True)]

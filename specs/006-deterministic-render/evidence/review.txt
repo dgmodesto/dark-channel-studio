@@ -1,0 +1,1 @@
+Code review (code-review agent): 4 medium findings (process kill/timeout, negative pause validation, coded store errors, pinned subtitle font); all fixed with tests.

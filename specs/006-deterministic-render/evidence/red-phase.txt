@@ -1,0 +1,49 @@
+
+=================================== ERRORS ====================================
+__________ ERROR collecting apps/worker/tests/test_render_ffmpeg.py ___________
+ImportError while importing test module 'C:\Users\dgmodesto\.copilot\repos\copilot-worktrees\dark-channel-studio\dgmodesto-jubilant-memory\apps\worker\tests\test_render_ffmpeg.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+apps\worker\tests\test_render_ffmpeg.py:5: in <module>
+    from dcs_worker.jobs.render import render_video_job
+E   ModuleNotFoundError: No module named 'dcs_worker.jobs.render'
+____________ ERROR collecting apps/worker/tests/test_render_job.py ____________
+ImportError while importing test module 'C:\Users\dgmodesto\.copilot\repos\copilot-worktrees\dark-channel-studio\dgmodesto-jubilant-memory\apps\worker\tests\test_render_job.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+apps\worker\tests\test_render_job.py:6: in <module>
+    from dcs_worker.jobs.render import render_video_job
+E   ModuleNotFoundError: No module named 'dcs_worker.jobs.render'
+___________ ERROR collecting apps/worker/tests/test_render_plan.py ____________
+ImportError while importing test module 'C:\Users\dgmodesto\.copilot\repos\copilot-worktrees\dark-channel-studio\dgmodesto-jubilant-memory\apps\worker\tests\test_render_plan.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+apps\worker\tests\test_render_plan.py:5: in <module>
+    from dcs_worker.render.models import Background, RenderError
+E   ModuleNotFoundError: No module named 'dcs_worker.render.models'
+_________ ERROR collecting apps/worker/tests/test_render_subtitles.py _________
+ImportError while importing test module 'C:\Users\dgmodesto\.copilot\repos\copilot-worktrees\dark-channel-studio\dgmodesto-jubilant-memory\apps\worker\tests\test_render_subtitles.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+apps\worker\tests\test_render_subtitles.py:4: in <module>
+    from dcs_worker.render.models import RenderError
+E   ModuleNotFoundError: No module named 'dcs_worker.render.models'
+=========================== short test summary info ===========================
+ERROR apps/worker/tests/test_render_ffmpeg.py
+ERROR apps/worker/tests/test_render_job.py
+ERROR apps/worker/tests/test_render_plan.py
+ERROR apps/worker/tests/test_render_subtitles.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 4 errors during collection !!!!!!!!!!!!!!!!!!!
+4 errors in 2.32s
