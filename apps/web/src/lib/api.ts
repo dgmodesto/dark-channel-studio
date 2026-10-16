@@ -20,6 +20,10 @@ export type Review = {
   title: string;
   video_url: string;
   audio_urls: string[];
+  thumbnail_url: string | null;
+  description: string;
+  tags: string[];
+  synthetic_content_disclosed: boolean;
   status: "awaiting_review" | "approved" | "changes_requested";
   notes: string;
   created_at: string;
