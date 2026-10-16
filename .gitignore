@@ -30,7 +30,8 @@ dist/
 .DS_Store
 Thumbs.db
 .idea/
-.vscode/
+.vscode/*
+!.vscode/tasks.json
 
 # Docker
 docker-compose.override.yml

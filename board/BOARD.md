@@ -12,10 +12,10 @@ Status: `Backlog` · `In Progress` · `Review` · `Done`
 | ID | Story | Status | Depends on | Spec |
 |---|---|---|---|---|
 | US-001 | Platform skeleton: Compose stack (Postgres, Redis, API, worker, web), health checks, CI, bilingual shell | Done | — | [specs/001-platform-skeleton](../specs/001-platform-skeleton/spec.md) |
-| US-002 | Provider abstraction + cost tracking: `ChatModel`/`TTS` protocols, OpenAI + ElevenLabs adapters, fakes, `cost_event` | Backlog | US-001 | — |
-| US-003 | Niche template + channel model: English A1/A2 template as data, channel CRUD in API and UI | Backlog | US-001 | — |
-| US-004 | Script pipeline: LangGraph writer + reviewer loop with bounded iterations and Postgres checkpoints | Backlog | US-002, US-003 | — |
-| US-005 | Voice job: TTS worker producing per-line audio with shadowing pauses | Backlog | US-002, US-004 | — |
+| US-002 | Provider abstraction + cost tracking: `ChatModel`/`TTS` protocols, OpenAI + ElevenLabs adapters, fakes, `cost_event` | Done | US-001 | [specs/002-provider-abstraction](../specs/002-provider-abstraction/spec.md) |
+| US-003 | Niche template + channel model: English A1/A2 template as data, channel CRUD in API and UI | Done | US-001 | [specs/003-niche-template-channel-model](../specs/003-niche-template-channel-model/spec.md) |
+| US-004 | Script pipeline: LangGraph writer + reviewer loop with bounded iterations and Postgres checkpoints | Done | US-002, US-003 | [specs/004-script-pipeline](../specs/004-script-pipeline/spec.md) |
+| US-005 | Voice job: TTS worker producing per-line audio with shadowing pauses | Done | US-002, US-004 | [specs/005-voice-job](../specs/005-voice-job/spec.md) |
 | US-006 | Deterministic render: FFmpeg/Remotion with dual EN/PT subtitles, background, music ducking | Backlog | US-005 | — |
 | US-007 | Review player and approval gate: audio/video review UI, approve/request changes resumes the graph | Backlog | US-004, US-006 | — |
 | US-008 | Thumbnail and SEO: template-based thumbnail, title/description/tags, disclosure rules | Backlog | US-004 | — |
@@ -40,22 +40,22 @@ Status: `Backlog` · `In Progress` · `Review` · `Done`
 - [x] CI runs lint and tests
 
 ### US-002 Provider abstraction + cost tracking
-- [ ] `ChatModel` and `TTS` protocols with config-selected adapters
-- [ ] OpenAI chat and ElevenLabs TTS adapters; fakes for tests
-- [ ] Every call writes a `cost_event`; per-run budget cap enforced
+- [x] `ChatModel` and `TTS` protocols with config-selected adapters
+- [x] OpenAI chat and ElevenLabs TTS adapters; fakes for tests
+- [x] Every call writes a `cost_event`; per-run budget cap enforced
 
 ### US-003 Niche template + channel model
-- [ ] English A1/A2 template stored as versioned data
-- [ ] Channel CRUD (API + UI) referencing a template
+- [x] English A1/A2 template stored as versioned data
+- [x] Channel CRUD (API + UI) referencing a template
 
 ### US-004 Script pipeline
-- [ ] Graph: idea → script → review loop (max N iterations) → approved script
-- [ ] State persisted in Postgres; resumable after restart
-- [ ] Orchestrator interface hides LangGraph
+- [x] Graph: idea → script → review loop (max N iterations) → approved script
+- [x] State persisted in Postgres; resumable after restart
+- [x] Orchestrator interface hides LangGraph
 
 ### US-005 Voice job
-- [ ] Idempotent TTS job per script line with retry
-- [ ] Shadowing pauses configurable by template
+- [x] Idempotent TTS job per script line with retry
+- [x] Shadowing pauses configurable by template
 
 ### US-006 Deterministic render
 - [ ] Same inputs produce the same video

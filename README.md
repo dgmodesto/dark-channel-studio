@@ -24,6 +24,8 @@ cp deploy/.env.example deploy/.env      # edit the password
 
 Development: `uv sync --all-packages && uv run pytest` (Python), `cd apps/web && npm ci && npm test` (portal).
 
+Local dev with hot reload (Windows/VS Code): run the task **Dev: all** (Terminal → Run Build Task). It starts Postgres and Redis in Docker, then the API (migrations + uvicorn `--reload`), the worker (arq `--watch`) and the portal (`next dev`) in separate panels. Prerequisites: Docker, `uv`, Node.js. Individual tasks (`Dev: api`, `Dev: worker`, `Dev: web`, `Dev: stop infra`) and the script itself (`deploy/scripts/dev.ps1 <infra|api|worker|web|stop>`) work too.
+
 ## Why this project
 
 It is a portfolio piece on practical AI architecture: where agents add value (research, writing, critique), where they must not be used (rendering, uploading), and how to make that split observable, budgeted and replaceable.

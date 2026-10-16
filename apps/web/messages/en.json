@@ -30,5 +30,29 @@
   },
   "Placeholder": {
     "comingSoon": "Coming soon"
+  },
+  "Channels": {
+    "title": "Channels",
+    "back": "Back to home",
+    "listLabel": "Your channels",
+    "empty": "No channels yet. Create your first one above.",
+    "name": "Channel name",
+    "template": "Niche template",
+    "create": "Create channel",
+    "delete": "Delete",
+    "templateInfo": "Template {template} v{version}"
+  },
+  "Errors": {
+    "unknown": "Something went wrong. Please try again.",
+    "api": {
+      "unreachable": "The API is unreachable"
+    },
+    "channel": {
+      "template_unknown": "The selected template does not exist.",
+      "not_found": "Channel not found."
+    },
+    "http": {
+      "invalid_request": "Please check the form fields."
+    }
   }
 }

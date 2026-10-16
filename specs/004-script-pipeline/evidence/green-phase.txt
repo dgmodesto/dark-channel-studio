@@ -1,0 +1,30 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.5, pytest-9.1.1, pluggy-1.7.0
+rootdir: C:\Users\dgmodesto\.copilot\repos\copilot-worktrees\dark-channel-studio\dgmodesto-crispy-robot
+configfile: pyproject.toml
+testpaths: packages/common/tests, packages/providers/tests, packages/niche-templates/tests, packages/orchestrator/tests, apps/api/tests, apps/worker/tests
+plugins: anyio-4.15.1, langsmith-0.14.11, asyncio-1.4.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 89 items
+
+packages\common\tests\test_health.py ......                              [  6%]
+packages\common\tests\test_logging.py .                                  [  7%]
+packages\common\tests\test_retry.py ..                                   [ 10%]
+packages\common\tests\test_settings.py ...                               [ 13%]
+packages\providers\tests\test_adapters.py ....                           [ 17%]
+packages\providers\tests\test_budget.py ....                             [ 22%]
+packages\providers\tests\test_fakes.py ..                                [ 24%]
+packages\providers\tests\test_metering.py ....                           [ 29%]
+packages\providers\tests\test_pricing.py ....                            [ 33%]
+packages\providers\tests\test_registry.py ........                       [ 42%]
+packages\providers\tests\test_sql_ledger.py .                            [ 43%]
+packages\niche-templates\tests\test_templates.py .......                 [ 51%]
+packages\orchestrator\tests\test_boundaries.py ..                        [ 53%]
+packages\orchestrator\tests\test_checks.py ..........                    [ 65%]
+packages\orchestrator\tests\test_pipeline.py .........                   [ 75%]
+packages\orchestrator\tests\test_resume.py .....                         [ 80%]
+apps\api\tests\test_channels.py ............                             [ 94%]
+apps\api\tests\test_health_route.py ....                                 [ 98%]
+apps\worker\tests\test_heartbeat.py .                                    [100%]
+
+============================= 89 passed in 3.24s ==============================
