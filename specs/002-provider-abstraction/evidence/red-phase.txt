@@ -1,0 +1,89 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.5, pytest-9.1.1, pluggy-1.7.0
+rootdir: C:\Users\dgmodesto\.copilot\repos\copilot-worktrees\dark-channel-studio\dgmodesto-fluffy-succotash
+configfile: pyproject.toml
+plugins: anyio-4.15.1, asyncio-1.4.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 0 items / 7 errors
+
+=================================== ERRORS ====================================
+_________ ERROR collecting packages/providers/tests/test_adapters.py __________
+ImportError while importing test module 'C:\Users\dgmodesto\.copilot\repos\copilot-worktrees\dark-channel-studio\dgmodesto-fluffy-succotash\packages\providers\tests\test_adapters.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+packages\providers\tests\test_adapters.py:5: in <module>
+    from dcs_providers.adapters.elevenlabs_tts import ElevenLabsTTS
+E   ModuleNotFoundError: No module named 'dcs_providers'
+__________ ERROR collecting packages/providers/tests/test_budget.py ___________
+ImportError while importing test module 'C:\Users\dgmodesto\.copilot\repos\copilot-worktrees\dark-channel-studio\dgmodesto-fluffy-succotash\packages\providers\tests\test_budget.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+packages\providers\tests\test_budget.py:4: in <module>
+    from dcs_providers.budget import RunBudget
+E   ModuleNotFoundError: No module named 'dcs_providers'
+___________ ERROR collecting packages/providers/tests/test_fakes.py ___________
+ImportError while importing test module 'C:\Users\dgmodesto\.copilot\repos\copilot-worktrees\dark-channel-studio\dgmodesto-fluffy-succotash\packages\providers\tests\test_fakes.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+packages\providers\tests\test_fakes.py:1: in <module>
+    from dcs_providers.fakes import FakeChatModel, FakeTTS
+E   ModuleNotFoundError: No module named 'dcs_providers'
+_________ ERROR collecting packages/providers/tests/test_metering.py __________
+ImportError while importing test module 'C:\Users\dgmodesto\.copilot\repos\copilot-worktrees\dark-channel-studio\dgmodesto-fluffy-succotash\packages\providers\tests\test_metering.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+packages\providers\tests\test_metering.py:4: in <module>
+    from dcs_providers.errors import BudgetExceededError
+E   ModuleNotFoundError: No module named 'dcs_providers'
+__________ ERROR collecting packages/providers/tests/test_pricing.py __________
+ImportError while importing test module 'C:\Users\dgmodesto\.copilot\repos\copilot-worktrees\dark-channel-studio\dgmodesto-fluffy-succotash\packages\providers\tests\test_pricing.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+packages\providers\tests\test_pricing.py:3: in <module>
+    from dcs_providers.pricing import chat_cost, tts_cost
+E   ModuleNotFoundError: No module named 'dcs_providers'
+_________ ERROR collecting packages/providers/tests/test_registry.py __________
+ImportError while importing test module 'C:\Users\dgmodesto\.copilot\repos\copilot-worktrees\dark-channel-studio\dgmodesto-fluffy-succotash\packages\providers\tests\test_registry.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+packages\providers\tests\test_registry.py:2: in <module>
+    from dcs_providers.adapters.elevenlabs_tts import ElevenLabsTTS
+E   ModuleNotFoundError: No module named 'dcs_providers'
+________ ERROR collecting packages/providers/tests/test_sql_ledger.py _________
+ImportError while importing test module 'C:\Users\dgmodesto\.copilot\repos\copilot-worktrees\dark-channel-studio\dgmodesto-fluffy-succotash\packages\providers\tests\test_sql_ledger.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+packages\providers\tests\test_sql_ledger.py:4: in <module>
+    from dcs_providers.ledger import CostEvent, SqlCostLedger, metadata
+E   ModuleNotFoundError: No module named 'dcs_providers'
+=========================== short test summary info ===========================
+ERROR packages/providers/tests/test_adapters.py
+ERROR packages/providers/tests/test_budget.py
+ERROR packages/providers/tests/test_fakes.py
+ERROR packages/providers/tests/test_metering.py
+ERROR packages/providers/tests/test_pricing.py
+ERROR packages/providers/tests/test_registry.py
+ERROR packages/providers/tests/test_sql_ledger.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 7 errors during collection !!!!!!!!!!!!!!!!!!!
+============================== 7 errors in 0.50s ==============================

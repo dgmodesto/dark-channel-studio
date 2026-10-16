@@ -12,7 +12,7 @@ Status: `Backlog` · `In Progress` · `Review` · `Done`
 | ID | Story | Status | Depends on | Spec |
 |---|---|---|---|---|
 | US-001 | Platform skeleton: Compose stack (Postgres, Redis, API, worker, web), health checks, CI, bilingual shell | Done | — | [specs/001-platform-skeleton](../specs/001-platform-skeleton/spec.md) |
-| US-002 | Provider abstraction + cost tracking: `ChatModel`/`TTS` protocols, OpenAI + ElevenLabs adapters, fakes, `cost_event` | Backlog | US-001 | — |
+| US-002 | Provider abstraction + cost tracking: `ChatModel`/`TTS` protocols, OpenAI + ElevenLabs adapters, fakes, `cost_event` | Done | US-001 | [specs/002-provider-abstraction](../specs/002-provider-abstraction/spec.md) |
 | US-003 | Niche template + channel model: English A1/A2 template as data, channel CRUD in API and UI | Backlog | US-001 | — |
 | US-004 | Script pipeline: LangGraph writer + reviewer loop with bounded iterations and Postgres checkpoints | Backlog | US-002, US-003 | — |
 | US-005 | Voice job: TTS worker producing per-line audio with shadowing pauses | Backlog | US-002, US-004 | — |
@@ -40,9 +40,9 @@ Status: `Backlog` · `In Progress` · `Review` · `Done`
 - [x] CI runs lint and tests
 
 ### US-002 Provider abstraction + cost tracking
-- [ ] `ChatModel` and `TTS` protocols with config-selected adapters
-- [ ] OpenAI chat and ElevenLabs TTS adapters; fakes for tests
-- [ ] Every call writes a `cost_event`; per-run budget cap enforced
+- [x] `ChatModel` and `TTS` protocols with config-selected adapters
+- [x] OpenAI chat and ElevenLabs TTS adapters; fakes for tests
+- [x] Every call writes a `cost_event`; per-run budget cap enforced
 
 ### US-003 Niche template + channel model
 - [ ] English A1/A2 template stored as versioned data
