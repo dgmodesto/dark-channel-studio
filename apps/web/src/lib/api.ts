@@ -15,6 +15,17 @@ export type Template = {
   content_language: string;
 };
 
+export type Review = {
+  run_id: string;
+  title: string;
+  video_url: string;
+  audio_urls: string[];
+  status: "awaiting_review" | "approved" | "changes_requested";
+  notes: string;
+  created_at: string;
+  updated_at: string;
+};
+
 export type ApiResult<T> = { ok: true; data: T } | { ok: false; code: string };
 
 function baseUrl() {
@@ -39,6 +50,17 @@ async function call<T>(path: string, init?: RequestInit): Promise<ApiResult<T>> 
 
 export const listChannels = () => call<Channel[]>("/channels");
 export const listTemplates = () => call<Template[]>("/templates");
+export const listReviews = () => call<Review[]>("/reviews");
+export const decideReview = (
+  runId: string,
+  decision: "approve" | "request_changes",
+  notes: string,
+) =>
+  call<Review>(`/reviews/${encodeURIComponent(runId)}/decision`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ decision, notes }),
+  });
 export const createChannel = (name: string, templateId: string) =>
   call<Channel>("/channels", {
     method: "POST",

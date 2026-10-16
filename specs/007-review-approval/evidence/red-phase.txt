@@ -1,0 +1,11 @@
+Test-first evidence: before adding the review gate implementation, the focused pytest
+collection failed because the required production module did not exist:
+
+ModuleNotFoundError: No module named 'dcs_orchestrator.adapters.review_gate'
+
+The failure was reproduced after syncing the repository's locked workspace packages.
+
+The first review-player test run also exposed an accessibility defect: Testing Library
+reported that an `<audio>` element is not labelable by a native `<label>`. The player
+was updated to reference its visible track name through `aria-labelledby`; the full
+web suite then passed.

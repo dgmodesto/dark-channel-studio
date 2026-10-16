@@ -60,6 +60,25 @@ async def test_job_renders_and_stores_video():
     assert get_template("english-a1-a2-br")  # template resolved by id
 
 
+async def test_job_submits_rendered_media_to_review_gate():
+    ctx = await make_ctx()
+    submissions = []
+
+    async def submit_review(payload):
+        submissions.append(payload)
+
+    ctx["review_submitter"] = submit_review
+    result = await render_video_job(ctx, {**PAYLOAD, "review_title": "Coffee episode"})
+    assert submissions == [
+        {
+            "run_id": "run-r",
+            "title": "Coffee episode",
+            "video_key": result["video_key"],
+            "audio_keys": ["run-r/000-a.mp3", "run-r/001-b.mp3"],
+        }
+    ]
+
+
 async def test_second_run_is_cached_without_ffmpeg():
     ctx = await make_ctx()
     first = await render_video_job(ctx, PAYLOAD)

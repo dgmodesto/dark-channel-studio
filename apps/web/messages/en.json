@@ -6,6 +6,7 @@
   "Nav": {
     "channels": "Channels",
     "pipeline": "Pipeline",
+    "review": "Review",
     "calendar": "Calendar",
     "metrics": "Metrics"
   },
@@ -42,6 +43,30 @@
     "delete": "Delete",
     "templateInfo": "Template {template} v{version}"
   },
+  "Review": {
+    "title": "Review queue",
+    "back": "Back to home",
+    "empty": "Nothing is waiting for review.",
+    "listLabel": "Rendered videos awaiting review",
+    "runId": "Run {runId}",
+    "videoLabel": "Video preview: {title}",
+    "audioLabel": "Voice track {number}",
+    "mediaUnsupported": "Your browser cannot play this media.",
+    "mediaError": "This media could not be loaded. Check the file and try refreshing the page.",
+    "notesLabel": "Change notes (required when requesting changes)",
+    "notesRequired": "Add notes before requesting changes.",
+    "approve": "Approve",
+    "requestChanges": "Request changes",
+    "saving": "Saving…",
+    "decisionError": "The decision could not be saved. Please try again.",
+    "approvedNotice": "Approved.",
+    "changesNotice": "Changes requested:",
+    "status": {
+      "awaiting_review": "Awaiting review",
+      "approved": "Approved",
+      "changes_requested": "Changes requested"
+    }
+  },
   "Errors": {
     "unknown": "Something went wrong. Please try again.",
     "api": {
@@ -50,6 +75,10 @@
     "channel": {
       "template_unknown": "The selected template does not exist.",
       "not_found": "Channel not found."
+    },
+    "review": {
+      "not_found": "This review item was not found.",
+      "media_not_found": "The requested review media could not be found."
     },
     "http": {
       "invalid_request": "Please check the form fields."

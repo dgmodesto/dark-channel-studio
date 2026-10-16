@@ -5,6 +5,7 @@ from typing import Any, TypedDict
 
 from langgraph.checkpoint.base import BaseCheckpointSaver
 from langgraph.graph import END, START, StateGraph
+from langgraph.types import Command, interrupt
 
 from dcs_niche_templates import NicheTemplate
 from dcs_orchestrator import prompts
@@ -14,6 +15,12 @@ from dcs_orchestrator.interface import (
     ScriptPipelineError,
     ScriptRequest,
     ScriptResult,
+)
+from dcs_orchestrator.review import (
+    ReviewDecision,
+    ReviewGateError,
+    ReviewRequest,
+    ReviewResult,
 )
 from dcs_providers.protocols import ChatModel
 
@@ -29,6 +36,14 @@ class _State(TypedDict, total=False):
     feedback: list[str]
     notes: list[str]
     status: str
+
+
+class _ReviewState(TypedDict, total=False):
+    run_id: str
+    video_key: str
+    audio_keys: list[str]
+    status: str
+    notes: str
 
 
 def _reviewer_verdict(raw: str) -> tuple[bool, str]:
@@ -156,3 +171,86 @@ async def postgres_checkpointer(dsn: str) -> AsyncIterator[BaseCheckpointSaver]:
     async with AsyncPostgresSaver.from_conn_string(plain) as saver:
         await saver.setup()
         yield saver
+
+
+class LangGraphReviewGate:
+    """Persisted human decision gate; each decision resumes its thread checkpoint."""
+
+    def __init__(self, checkpointer: BaseCheckpointSaver):
+        async def wait_for_decision(state: _ReviewState) -> _ReviewState:
+            response = interrupt(
+                {
+                    "run_id": state["run_id"],
+                    "video_key": state["video_key"],
+                    "audio_keys": state.get("audio_keys", []),
+                }
+            )
+            return {"status": response["decision"], "notes": response.get("notes", "")}
+
+        graph = StateGraph(_ReviewState)
+        graph.add_node("wait_for_decision", wait_for_decision)
+        graph.add_edge(START, "wait_for_decision")
+        graph.add_edge("wait_for_decision", END)
+        self._graph = graph.compile(checkpointer=checkpointer)
+
+    @staticmethod
+    def _config(run_id: str) -> dict[str, Any]:
+        return {"configurable": {"thread_id": run_id}}
+
+    @staticmethod
+    def _result(run_id: str, state: _ReviewState) -> ReviewResult:
+        return ReviewResult(
+            run_id=run_id,
+            video_key=state["video_key"],
+            audio_keys=state.get("audio_keys", []),
+            status=state.get("status", "awaiting_review"),
+            notes=state.get("notes", ""),
+        )
+
+    async def start(self, request: ReviewRequest) -> ReviewResult:
+        if await self.get_result(request.run_id) is not None:
+            raise ReviewGateError("review.run_exists", run_id=request.run_id)
+        await self._graph.ainvoke(
+            {
+                "run_id": request.run_id,
+                "video_key": request.video_key,
+                "audio_keys": request.audio_keys or [],
+                "status": "awaiting_review",
+            },
+            self._config(request.run_id),
+        )
+        result = await self.get_result(request.run_id)
+        if result is None:
+            raise ReviewGateError("review.run_not_found", run_id=request.run_id)
+        return result
+
+    async def decide(self, run_id: str, decision: ReviewDecision, notes: str = "") -> ReviewResult:
+        current = await self.get_result(run_id)
+        if current is None:
+            raise ReviewGateError("review.run_not_found", run_id=run_id)
+        if current.status != "awaiting_review":
+            raise ReviewGateError("review.already_decided", run_id=run_id)
+        if decision not in ("approve", "request_changes"):
+            raise ReviewGateError("review.invalid_decision")
+        cleaned_notes = notes.strip()
+        if decision == "request_changes" and not cleaned_notes:
+            raise ReviewGateError("review.notes_required")
+        await self._graph.ainvoke(
+            Command(
+                resume={
+                    "decision": "approved" if decision == "approve" else "changes_requested",
+                    "notes": cleaned_notes,
+                }
+            ),
+            self._config(run_id),
+        )
+        result = await self.get_result(run_id)
+        if result is None:
+            raise ReviewGateError("review.run_not_found", run_id=run_id)
+        return result
+
+    async def get_result(self, run_id: str) -> ReviewResult | None:
+        snapshot = await self._graph.aget_state(self._config(run_id))
+        if not snapshot.values:
+            return None
+        return self._result(run_id, snapshot.values)

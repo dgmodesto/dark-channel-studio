@@ -83,3 +83,68 @@ a:focus-visible {
 .channel-list li {
   align-items: center;
 }
+
+.review-queue {
+  display: grid;
+  gap: 1rem;
+}
+
+.review-card {
+  min-width: 0;
+  padding: 1rem;
+  background: var(--panel);
+  border: 1px solid #303746;
+  border-radius: 0.75rem;
+}
+
+.review-card header,
+.review-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.review-card h2 {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.review-card video,
+.review-audio audio {
+  display: block;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.review-decision {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.review-decision label {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.review-decision textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.review-actions button {
+  min-height: 2.75rem;
+  padding: 0.5rem 0.9rem;
+}
+
+.review-status {
+  padding: 0.25rem 0.6rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+}
+
+.review-notes {
+  overflow-wrap: anywhere;
+}
