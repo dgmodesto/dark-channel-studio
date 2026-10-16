@@ -57,8 +57,7 @@ function Wait-Port($port, $label) {
 Set-Location $root
 switch ($Service) {
     "infra" {
-        docker info *> $null
-        if ($LASTEXITCODE -ne 0) {
+        if (-not (Test-Docker)) {
             $desktop = Join-Path $env:ProgramFiles "Docker\Docker\Docker Desktop.exe"
             if (-not (Test-Path $desktop)) { throw "Docker is not installed or not on PATH. Install Docker Desktop." }
             Write-Host "Docker engine is not running; starting Docker Desktop..."
@@ -66,11 +65,11 @@ switch ($Service) {
             $ready = $false
             for ($i = 0; $i -lt 90 -and -not $ready; $i++) {
                 Start-Sleep -Seconds 2
-                docker info *> $null
-                $ready = ($LASTEXITCODE -eq 0)
+                $ready = Test-Docker
             }
             if (-not $ready) { throw "Docker engine did not start within 3 minutes. Start Docker Desktop manually and retry." }
         }
+        $ErrorActionPreference = "Continue"
         docker compose -f deploy/compose.yaml --env-file deploy/.env up -d --wait postgres redis
         if ($LASTEXITCODE -ne 0) { throw "docker compose failed" }
         Write-Host "Postgres on :$pgPort and Redis on :$redisPort are ready."
@@ -93,6 +92,7 @@ switch ($Service) {
         npx next dev -p $webPort
     }
     "stop" {
+        $ErrorActionPreference = "Continue"
         docker compose -f deploy/compose.yaml --env-file deploy/.env stop postgres redis
     }
 }
