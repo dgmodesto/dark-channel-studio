@@ -1,0 +1,34 @@
+{
+  "App": {
+    "name": "Dark Channel Studio",
+    "tagline": "Plan, produce and publish faceless channels with a human in the loop."
+  },
+  "Nav": {
+    "channels": "Channels",
+    "pipeline": "Pipeline",
+    "calendar": "Calendar",
+    "metrics": "Metrics"
+  },
+  "Status": {
+    "title": "Platform status",
+    "healthy": "All systems operational",
+    "unhealthy": "Some components need attention",
+    "unreachable": "The API is unreachable",
+    "component": {
+      "api": "API",
+      "database": "Database",
+      "redis": "Queue store",
+      "worker": "Worker"
+    },
+    "componentHealthy": "Healthy",
+    "componentUnhealthy": "Unhealthy"
+  },
+  "Locale": {
+    "label": "Language",
+    "en": "English",
+    "pt-BR": "Português (Brasil)"
+  },
+  "Placeholder": {
+    "comingSoon": "Coming soon"
+  }
+}

@@ -1,0 +1,10 @@
+**/.venv
+**/node_modules
+**/.next
+**/__pycache__
+.git
+storage
+.env
+deploy/.env
+specs
+docs

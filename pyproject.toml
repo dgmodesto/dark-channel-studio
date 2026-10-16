@@ -1,0 +1,37 @@
+[project]
+name = "dark-channel-studio"
+version = "0.1.0"
+description = "Workspace root for Dark Channel Studio Python packages"
+requires-python = ">=3.12"
+dependencies = []
+
+[tool.uv.workspace]
+members = ["packages/common", "apps/api", "apps/worker"]
+
+[dependency-groups]
+dev = [
+  "pytest>=8",
+  "pytest-asyncio>=0.24",
+  "httpx>=0.27",
+  "fakeredis>=2.26",
+  "ruff>=0.8",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["apps/web"]
+
+[tool.ruff.format]
+exclude = ["*.md"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "ASYNC"]
+ignore = ["ASYNC109"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["dcs_common", "dcs_api", "dcs_worker"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["packages/common/tests", "apps/api/tests", "apps/worker/tests"]

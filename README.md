@@ -1,13 +1,28 @@
 # Dark Channel Studio
 
-![status](https://img.shields.io/badge/status-design%20phase-orange)
+![status](https://img.shields.io/badge/status-early%20development-yellow)
 ![license](https://img.shields.io/badge/license-MIT-blue)
 ![python](https://img.shields.io/badge/backend-Python%20%2B%20FastAPI-3776AB)
 ![i18n](https://img.shields.io/badge/UI-en%20%7C%20pt--BR-green)
 
 A self-hosted portal that automates the lifecycle of faceless ("dark") YouTube channels with AI, while keeping a **human in the loop** where it matters: niche setup, idea research, scripting, voice, assets, deterministic rendering, thumbnail/SEO, approval, scheduled upload, and analytics that feed back into ideation.
 
-> **Status:** design phase. This repository currently contains architecture and decisions only; no application code yet.
+> **Status:** early development. The platform skeleton (API, worker, portal, Postgres, Redis) runs locally; product features are being delivered story by story (see `board/BOARD.md`).
+
+## Quick start
+
+Prerequisites: Docker with Compose v2.
+
+```bash
+cp deploy/.env.example deploy/.env      # edit the password
+./deploy/scripts/smoke.sh               # Windows: .\deploy\scripts\smoke.ps1
+```
+
+- Portal: http://127.0.0.1:3000 (`/en`, `/pt-BR`)
+- Health: http://127.0.0.1:8000/health
+- Reset all local data: `./deploy/scripts/reset.sh` (destructive)
+
+Development: `uv sync --all-packages && uv run pytest` (Python), `cd apps/web && npm ci && npm test` (portal).
 
 ## Why this project
 

@@ -1,0 +1,1 @@
+{"status":"healthy","components":{"api":{"status":"healthy"},"database":{"status":"healthy","latency_ms":3},"redis":{"status":"healthy","latency_ms":1},"worker":{"status":"healthy","last_heartbeat":"2026-10-16T14:46:50.492841+00:00"}}}

@@ -1,0 +1,2 @@
+    raise ConfigError(missing, invalid) from None
+dcs_common.settings.ConfigError: configuration error (missing: DATABASE_URL)
