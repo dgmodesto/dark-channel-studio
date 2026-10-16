@@ -84,7 +84,7 @@ switch ($Service) {
     "web" {
         Set-Location (Join-Path $root "apps\web")
         if (-not (Test-Path node_modules)) { npm ci }
-        npm run dev -- --port $webPort
+        npx next dev -p $webPort
     }
     "stop" {
         docker compose -f deploy/compose.yaml --env-file deploy/.env stop postgres redis
