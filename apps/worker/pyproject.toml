@@ -5,11 +5,15 @@ description = "Dark Channel Studio background worker"
 requires-python = ">=3.12"
 dependencies = [
   "dcs-common",
+  "dcs-providers",
+  "dcs-niche-templates",
   "arq>=0.26",
 ]
 
 [tool.uv.sources]
 dcs-common = { workspace = true }
+dcs-providers = { workspace = true }
+dcs-niche-templates = { workspace = true }
 
 [build-system]
 requires = ["hatchling"]

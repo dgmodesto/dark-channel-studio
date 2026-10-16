@@ -1,0 +1,77 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Dev: infra (Postgres + Redis)",
+      "type": "shell",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File deploy/scripts/dev.ps1 infra",
+      "presentation": { "panel": "dedicated", "group": "dev" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Dev: api",
+      "type": "shell",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File deploy/scripts/dev.ps1 api",
+      "isBackground": true,
+      "presentation": { "panel": "dedicated", "group": "dev" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Dev: worker",
+      "type": "shell",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File deploy/scripts/dev.ps1 worker",
+      "isBackground": true,
+      "presentation": { "panel": "dedicated", "group": "dev" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Dev: web",
+      "type": "shell",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File deploy/scripts/dev.ps1 web",
+      "isBackground": true,
+      "presentation": { "panel": "dedicated", "group": "dev" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Dev: apps (api + worker + web)",
+      "dependsOn": ["Dev: api", "Dev: worker", "Dev: web"],
+      "dependsOrder": "parallel",
+      "problemMatcher": []
+    },
+    {
+      "label": "Dev: all (infra + api + worker + web)",
+      "dependsOn": ["Dev: infra (Postgres + Redis)", "Dev: apps (api + worker + web)"],
+      "dependsOrder": "sequence",
+      "problemMatcher": [],
+      "group": { "kind": "build", "isDefault": true },
+      "detail": "Starts Postgres/Redis in Docker, then api, worker and web with hot reload."
+    },
+    {
+      "label": "Dev: stop infra",
+      "type": "shell",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File deploy/scripts/dev.ps1 stop",
+      "problemMatcher": []
+    },
+    {
+      "label": "Docker: full stack (compose)",
+      "type": "shell",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File deploy/scripts/smoke.ps1",
+      "problemMatcher": []
+    },
+    {
+      "label": "Test: python",
+      "type": "shell",
+      "command": "uv run pytest -q; uv run ruff check .",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Test: web",
+      "type": "shell",
+      "command": "npm test",
+      "options": { "cwd": "${workspaceFolder}/apps/web" },
+      "group": "test",
+      "problemMatcher": []
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+
+=================================== ERRORS ====================================
+____________ ERROR collecting apps/worker/tests/test_voice_job.py _____________
+ImportError while importing test module 'C:\Users\dgmodesto\.copilot\repos\copilot-worktrees\dark-channel-studio\dgmodesto-silver-funicular\apps\worker\tests\test_voice_job.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+apps\worker\tests\test_voice_job.py:2: in <module>
+    from dcs_worker.jobs.voice import synthesize_voice_job
+E   ModuleNotFoundError: No module named 'dcs_worker.jobs.voice'
+___________ ERROR collecting apps/worker/tests/test_voice_pauses.py ___________
+ImportError while importing test module 'C:\Users\dgmodesto\.copilot\repos\copilot-worktrees\dark-channel-studio\dgmodesto-silver-funicular\apps\worker\tests\test_voice_pauses.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+apps\worker\tests\test_voice_pauses.py:3: in <module>
+    from dcs_worker.voice.models import VoiceLine, VoiceRequest
+E   ModuleNotFoundError: No module named 'dcs_worker.voice'
+___________ ERROR collecting apps/worker/tests/test_voice_store.py ____________
+ImportError while importing test module 'C:\Users\dgmodesto\.copilot\repos\copilot-worktrees\dark-channel-studio\dgmodesto-silver-funicular\apps\worker\tests\test_voice_store.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+apps\worker\tests\test_voice_store.py:3: in <module>
+    from dcs_worker.voice.models import VoiceError
+E   ModuleNotFoundError: No module named 'dcs_worker.voice'
+_________ ERROR collecting apps/worker/tests/test_voice_synthesize.py _________
+ImportError while importing test module 'C:\Users\dgmodesto\.copilot\repos\copilot-worktrees\dark-channel-studio\dgmodesto-silver-funicular\apps\worker\tests\test_voice_synthesize.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+apps\worker\tests\test_voice_synthesize.py:9: in <module>
+    from dcs_worker.voice.models import VoiceError, VoiceLine, VoiceRequest
+E   ModuleNotFoundError: No module named 'dcs_worker.voice'
+=========================== short test summary info ===========================
+ERROR apps/worker/tests/test_voice_job.py
+ERROR apps/worker/tests/test_voice_pauses.py
+ERROR apps/worker/tests/test_voice_store.py
+ERROR apps/worker/tests/test_voice_synthesize.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 4 errors during collection !!!!!!!!!!!!!!!!!!!
+4 errors in 6.51s
