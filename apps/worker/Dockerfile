@@ -3,7 +3,7 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 WORKDIR /app
 ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy PYTHONUNBUFFERED=1
 COPY pyproject.toml uv.lock ./
-COPY packages/common packages/common
+COPY packages packages
 COPY apps/worker apps/worker
 COPY apps/api/pyproject.toml apps/api/pyproject.toml
 RUN mkdir -p apps/api/src/dcs_api && touch apps/api/src/dcs_api/__init__.py \

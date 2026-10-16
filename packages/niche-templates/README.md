@@ -1,3 +1,1 @@
-# packages/niche-templates
-
-Niche templates as data: prompt pack, output schemas, review rules, render preset, subtitle config, cadence. First template: `english-a1-a2-br`. Planned.
+Niche templates as data: versioned JSON files validated by Pydantic (`dcs_niche_templates`). First template: `english-a1-a2-br` v1. Human-approval and synthetic-disclosure gates cannot be disabled.
