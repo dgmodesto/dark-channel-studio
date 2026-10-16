@@ -12,6 +12,7 @@ dependencies = [
 
 [tool.uv.sources]
 dcs-common = { workspace = true }
+dcs-niche-templates = { workspace = true }
 
 [build-system]
 requires = ["hatchling"]

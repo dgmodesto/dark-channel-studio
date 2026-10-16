@@ -65,3 +65,21 @@ a:focus-visible {
 [data-status="unreachable"] {
   color: var(--bad);
 }
+
+.channel-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: end;
+  margin: 1rem 0;
+}
+
+.channel-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.channel-list li {
+  align-items: center;
+}

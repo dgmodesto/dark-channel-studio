@@ -7,6 +7,7 @@ members = [
     "dark-channel-studio",
     "dcs-api",
     "dcs-common",
+    "dcs-niche-templates",
     "dcs-providers",
     "dcs-worker",
 ]
@@ -235,6 +236,17 @@ requires-dist = [
     { name = "sqlalchemy", extras = ["asyncio"], specifier = ">=2.0" },
     { name = "structlog", specifier = ">=24.4" },
 ]
+
+[[package]]
+name = "dcs-niche-templates"
+version = "0.1.0"
+source = { editable = "packages/niche-templates" }
+dependencies = [
+    { name = "pydantic" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "pydantic", specifier = ">=2.8" }]
 
 [[package]]
 name = "dcs-providers"

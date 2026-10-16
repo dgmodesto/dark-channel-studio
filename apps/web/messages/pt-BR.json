@@ -30,5 +30,29 @@
   },
   "Placeholder": {
     "comingSoon": "Em breve"
+  },
+  "Channels": {
+    "title": "Canais",
+    "back": "Voltar ao início",
+    "listLabel": "Seus canais",
+    "empty": "Nenhum canal ainda. Crie o primeiro acima.",
+    "name": "Nome do canal",
+    "template": "Template de nicho",
+    "create": "Criar canal",
+    "delete": "Excluir",
+    "templateInfo": "Template {template} v{version}"
+  },
+  "Errors": {
+    "unknown": "Algo deu errado. Tente novamente.",
+    "api": {
+      "unreachable": "A API está inacessível"
+    },
+    "channel": {
+      "template_unknown": "O template selecionado não existe.",
+      "not_found": "Canal não encontrado."
+    },
+    "http": {
+      "invalid_request": "Verifique os campos do formulário."
+    }
   }
 }

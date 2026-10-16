@@ -1,0 +1,34 @@
+{
+  "id": "english-a1-a2-br",
+  "version": 1,
+  "name": "English A1/A2 for Brazilian learners",
+  "content_language": "en",
+  "level": "A1-A2",
+  "script": {
+    "sections": ["hook", "key_phrases", "dialogue", "recap", "call_to_action"],
+    "max_lines": 24,
+    "max_words_per_line": 12
+  },
+  "voice": {
+    "role": "narrator",
+    "speed": 0.9,
+    "shadowing_pause_seconds": 2.0
+  },
+  "subtitles": {
+    "primary": "en",
+    "secondary": "pt-BR",
+    "style": "dual-stacked"
+  },
+  "seo": {
+    "title_max_chars": 70,
+    "max_tags": 12,
+    "description_cta": "Practice out loud: repeat each line during the pause."
+  },
+  "gates": {
+    "human_approval": true,
+    "synthetic_disclosure": true
+  },
+  "cadence": {
+    "videos_per_week": 3
+  }
+}

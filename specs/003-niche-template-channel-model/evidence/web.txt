@@ -1,0 +1,26 @@
+
+> @dcs/web@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.5 C:/Users/dgmodesto/.copilot/repos/copilot-worktrees/dark-channel-studio/dgmodesto-fluffy-succotash/apps/web
+
+
+ Test Files  5 passed (5)
+      Tests  16 passed (16)
+   Start at  12:03:29
+   Duration  4.88s (environment 75%, setup 11%, tests 6%, import 5%, transform 2%, worker 1%)
+
+
+> @dcs/web@0.1.0 typecheck
+> tsc --noEmit
+
+
+> @dcs/web@0.1.0 lint
+> eslint .
+
+
+> @dcs/web@0.1.0 check:translations
+> node scripts/check-translations.mjs
+
+Translation catalogs are in sync.
