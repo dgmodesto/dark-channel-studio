@@ -1,0 +1,9 @@
+Red phase: `uv run --all-packages pytest packages/niche-templates/tests/test_seo.py -q`
+failed during collection because `dcs_niche_templates.seo` did not exist.
+
+Green phase:
+- `uv run --all-packages pytest -q`: 164 passed.
+- Final focused Python run (SEO/API/worker): 18 passed.
+- Final web run: 22 tests passed, typecheck and lint passed, translations in sync.
+- Python ruff check and format check passed.
+- Independent review identified the legacy-thumbnail/disclosure migration issue; migration now leaves legacy disclosure false, thumbnail optional, and API approval fails closed.

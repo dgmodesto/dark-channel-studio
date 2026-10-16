@@ -11,6 +11,10 @@ const review: Review = {
   title: "Coffee episode",
   video_url: "/reviews/render-123/media/video",
   audio_urls: ["/reviews/render-123/media/audio/0"],
+  thumbnail_url: "/api/reviews/render-123/media/thumbnail",
+  description: "Learn English. This video contains AI-generated synthetic media.",
+  tags: ["English", "coffee"],
+  synthetic_content_disclosed: true,
   status: "awaiting_review",
   notes: "",
   created_at: "2026-10-16T12:00:00Z",
@@ -36,6 +40,12 @@ describe("ReviewQueue", () => {
       screen.getByLabelText(enMessages.Review.audioLabel.replace("{number}", "1")),
     ).toHaveAttribute("controls");
     expect(screen.getByRole("button", { name: enMessages.Review.approve })).toBeInTheDocument();
+    expect(
+      screen.getByRole("img", {
+        name: enMessages.Review.thumbnailAlt.replace("{title}", review.title),
+      }),
+    ).toHaveAttribute("src", review.thumbnail_url);
+    expect(screen.getByText(review.description)).toBeInTheDocument();
     expect(
       screen.getByRole("button", { name: enMessages.Review.requestChanges }),
     ).toBeInTheDocument();
@@ -66,6 +76,26 @@ describe("ReviewQueue", () => {
   it("shows a localized empty state", () => {
     wrap("pt-BR", <ReviewQueue reviews={[]} action={vi.fn()} />);
     expect(screen.getByText(ptMessages.Review.empty)).toBeInTheDocument();
+  });
+
+  it("warns when synthetic media disclosure is missing", () => {
+    wrap(
+      "en",
+      <ReviewQueue
+        reviews={[
+          {
+            ...review,
+            thumbnail_url: null,
+            description: "",
+            tags: [],
+            synthetic_content_disclosed: false,
+          },
+        ]}
+        action={vi.fn()}
+      />,
+    );
+    expect(screen.getByText(enMessages.Review.disclosureRequired)).toBeInTheDocument();
+    expect(screen.queryByRole("img")).not.toBeInTheDocument();
   });
 
   it("reports a media loading error", () => {

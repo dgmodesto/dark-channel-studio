@@ -30,6 +30,14 @@ class SeoRules(_Strict):
     title_max_chars: int = Field(gt=0)
     max_tags: int = Field(gt=0)
     description_cta: str
+    synthetic_disclosure: str
+
+
+class ThumbnailConfig(_Strict):
+    background: str
+    accent: str
+    label: str
+    max_text_chars: int = Field(gt=0)
 
 
 class Gates(_Strict):
@@ -51,5 +59,6 @@ class NicheTemplate(_Strict):
     voice: VoiceConfig
     subtitles: SubtitleConfig
     seo: SeoRules
+    thumbnail: ThumbnailConfig
     gates: Gates
     cadence: Cadence

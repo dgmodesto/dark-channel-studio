@@ -57,6 +57,9 @@ async def test_job_renders_and_stores_video():
     assert result["cached"] is False
     assert result["duration_seconds"] == 5.0
     assert await ctx["audio_store"].get(result["video_key"]) == b"VIDEO"
+    assert (await ctx["audio_store"].get(result["thumbnail_key"])).startswith(b"<svg")
+    assert result["seo"]["synthetic_content_disclosed"] is True
+    assert "AI-generated synthetic media" in result["seo"]["description"]
     assert get_template("english-a1-a2-br")  # template resolved by id
 
 
@@ -75,6 +78,10 @@ async def test_job_submits_rendered_media_to_review_gate():
             "title": "Coffee episode",
             "video_key": result["video_key"],
             "audio_keys": ["run-r/000-a.mp3", "run-r/001-b.mp3"],
+            "thumbnail_key": result["thumbnail_key"],
+            "description": result["seo"]["description"],
+            "tags": result["seo"]["tags"],
+            "synthetic_content_disclosed": True,
         }
     ]
 

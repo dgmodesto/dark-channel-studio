@@ -111,6 +111,18 @@ a:focus-visible {
   overflow-wrap: anywhere;
 }
 
+.review-thumbnail {
+  display: block;
+  width: min(100%, 40rem);
+  height: auto;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+}
+
+.review-seo {
+  overflow-wrap: anywhere;
+}
+
 .review-card video,
 .review-audio audio {
   display: block;

@@ -23,7 +23,14 @@
   "seo": {
     "title_max_chars": 70,
     "max_tags": 12,
-    "description_cta": "Practice out loud: repeat each line during the pause."
+    "description_cta": "Practice out loud: repeat each line during the pause.",
+    "synthetic_disclosure": "This video contains AI-generated synthetic media."
+  },
+  "thumbnail": {
+    "background": "#102A43",
+    "accent": "#F0B429",
+    "label": "ENGLISH PRACTICE",
+    "max_text_chars": 32
   },
   "gates": {
     "human_approval": true,

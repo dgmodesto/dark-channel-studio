@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useActionState } from "react";
 import { useRef, useState } from "react";
@@ -129,6 +130,26 @@ export function ReviewQueue({
               {t(`status.${review.status}`)}
             </span>
           </header>
+          {review.thumbnail_url && (
+            <Image
+              className="review-thumbnail"
+              src={review.thumbnail_url}
+              alt={t("thumbnailAlt", { title: review.title })}
+              width={1280}
+              height={720}
+              unoptimized
+            />
+          )}
+          {(review.description || review.tags.length > 0 || !review.synthetic_content_disclosed) && (
+            <section aria-label={t("seoLabel")} className="review-seo">
+              <h3>{t("seoLabel")}</h3>
+              {review.description && <p>{review.description}</p>}
+              {review.tags.length > 0 && <p>{t("tagsLabel", { tags: review.tags.join(", ") })}</p>}
+            </section>
+          )}
+          <p className="review-disclosure">
+            {review.synthetic_content_disclosed ? t("disclosure") : t("disclosureRequired")}
+          </p>
           <VideoPlayer runId={review.run_id} title={review.title} />
           {review.audio_urls.map((_, index) => (
             <AudioPlayer key={`${review.run_id}-${index}`} runId={review.run_id} index={index} />
